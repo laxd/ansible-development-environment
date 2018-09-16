@@ -1,0 +1,21 @@
+---
+
+ - name: Create vundle dir
+   file:
+     path: "/home/{{user}}/.vim/bundle"
+     state: present
+
+ - name: Install Vundle
+   git:
+     repo: "https://github.com/gmarik/vundle.git"
+     dest: /home/{{user}}/.vim/bundle/vundle
+
+ - name: Install vim
+   package:
+     name: vim
+     state: present
+
+ - name: Copy .vimrc file
+   copy:
+     src: .vimrc
+     dest: /home/{{user}}/.vimrc
